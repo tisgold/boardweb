@@ -13,7 +13,7 @@
 </head>
 <body>
   <table border="2">
-    <thead><tr><th>학번</th><th>이름</th><th>연락처</th></tr></thead>
+    <thead><tr><th>학번</th><th>이름</th><th>연락처</th><th>주소</th></tr></thead>
     <tbody>
     <%
     // 자바영역
