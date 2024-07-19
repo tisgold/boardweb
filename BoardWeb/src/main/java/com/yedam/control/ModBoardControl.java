@@ -11,24 +11,19 @@ import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
 
-public class AddBoardControl implements Control {
+public class ModBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String writer = req.getParameter("writer");
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
-		
-		BoardVO board = new BoardVO();
-		board.setWriter(writer);
-		board.setTitle(title);
-		board.setContent(content);
+		String bno = req.getParameter("bno");
 		
 		BoardService svc = new BoardServiceImpl();
-		if(svc.addBoard(board)) {
-			// 목록이동
-			resp.sendRedirect("boardList.do");
-		}
-	}
+		BoardVO board = svc.getBoard(Integer.parseInt(bno));
+		
+		req.setAttribute("board", board);
 	
+		req.getRequestDispatcher("WEB-INF/jsp/modifyForm.jsp").forward(req, resp);
+
+	}
+
 }

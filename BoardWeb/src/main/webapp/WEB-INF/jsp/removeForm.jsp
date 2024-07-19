@@ -2,16 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../includes/header.jsp" %>
-  <h3>게시판 상세(board.jsp)</h3>
-  <%
-    BoardVO board = (BoardVO) request.getAttribute("board");
-  %>
-  <form action="removeBoard.do">
+<h3>삭제화면(removeForm.jsp)</h3>
+<% BoardVO board = (BoardVO) request.getAttribute("board"); %>
+<form action="deleteBoard.do">
   <input type="hidden" name="bno" value="<%=board.getBoardNo() %>">
   <table class="table">
     <tr>
-      <th class="col-sm-3">글번호</th><td><%=board.getBoardNo() %></td>
-      <th class="col-sm-3">조회수</th><td><%=board.getViewCnt() %></td>
+      <th class="col-sm-3">글번호</th><td class="col-sm-3"><%=board.getBoardNo() %></td>
+      <th class="col-sm-3">조회수</th><td class="col-sm-3"><%=board.getViewCnt() %></td>
     </tr>
     <tr>
       <th>제목</th>
@@ -26,21 +24,16 @@
       <td colspan="3"><%=board.getWriter() %></td>
     </tr>
     <tr>
-      <th>작성일시</th>
-      <td colspan="3"><%=board.getWriteDate() %></td>
-    </tr>
-    <tr>
       <td colspan="4" align="center">
-        <input class="btn btn-danger" type="submit" value="삭제화면">
-        <button class="btn btn-warning" type="button">수정화면</button>
+        <input class="btn btn-danger" type="submit" value="삭제">
+        <button class="btn btn-warning" type="button">취소</button>
       </td>
     </tr>
   </table>
-  </form>
-  
-  <script>
+</form>
+<script>
     document.querySelector('form>table button.btn.btn-warning').addEventListener('click', function(e) {
-    	location.href = 'modifyBoard.do?bno=<%=board.getBoardNo() %>';
+    	location.href = 'board.do?bno=<%=board.getBoardNo() %>';
     });
-  </script>  
+</script>
 <%@ include file="../includes/footer.jsp" %>

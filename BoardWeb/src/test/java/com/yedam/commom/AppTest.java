@@ -1,12 +1,20 @@
 package com.yedam.commom;
 
+import com.yedam.common.SearchDTO;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 
 public class AppTest {
 	public static void main(String[] args) {
 		BoardService svc = new BoardServiceImpl();
-		svc.boardList().forEach(System.out::println);
+		
+		SearchDTO search = new SearchDTO();
+		search.setSearchCondition("W");
+		search.setKeyword("user");
+		search.setPage(1);
+		svc.boardList(search).forEach(System.out::println);
+		
+//		svc.boardList(5).forEach(System.out::println);
 		
 		/* mapper 가져오기
 		SqlSession sqlSession = DataSource.getInstance().openSession(true);

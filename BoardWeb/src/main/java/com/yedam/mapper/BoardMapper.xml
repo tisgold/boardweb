@@ -23,8 +23,39 @@
           ,view_cnt
           ,write_date
     from tbl_board
-    where board_no = #{bno}
-    order by board_no 
+    where board_no = #{boardNo}
+  </select>
+  
+  <!-- 페이징 목록 -->
+  <select id="selectListPaging" parameterType="com.yedam.common.SearchDTO">
+    select b.*
+      from (select rownum rn, a.*
+        from (select *
+             from tbl_board
+             where
+             <choose>
+               <when test="searchCondition == 'T'.toString() ">
+                 title like '%'||#{keyword}||'%'
+               </when>
+               <when test="searchCondition == 'W'.toString() ">
+                 writer like '%'||#{keyword}||'%'
+               </when>
+               <when test="searchCondition == 'TW'.toString() ">
+                 title like '%'||#{keyword}||'%' or writer like '%'||#{keyword}||'%'
+               </when>
+               <otherwise>1 = 1</otherwise>
+             </choose>
+             order by board_no) a ) b
+    where b.rn > (#{page} - 1) * 10
+    <![CDATA[
+    and   b.rn <= (#{page} * 10)
+    ]]>
+  </select>
+  
+  <!-- 전체 페이지 계산 -->
+  <select id="selectTotalCount">
+    select count(1)
+    from tbl_board
   </select>
   
   <insert id="insertBoard" parameterType="com.yedam.vo.BoardVO">
@@ -47,7 +78,7 @@
   
   <delete id="deleteBoard" parameterType="int">
     delete from tbl_board
-    where board_no = #{bno}
+    where board_no = #{boardNo}
   </delete>
   
 </mapper>
