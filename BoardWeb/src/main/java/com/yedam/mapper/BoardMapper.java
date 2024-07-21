@@ -13,7 +13,7 @@ public interface BoardMapper {
 	List<BoardVO> selectList();
 	List<BoardVO> selectListPaging(SearchDTO search); // 페이지정보 -> 10건씩 출력
 	// 페이징 계산하기 위한 전체건수
-	int selectTotalCount();
+	int selectTotalCount(SearchDTO search);
 	int insertBoard(BoardVO board);
 	int updateBoard(BoardVO board);
 	int deleteBoard(int boardNo);

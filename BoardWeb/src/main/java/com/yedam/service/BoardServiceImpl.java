@@ -24,8 +24,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public int totalCount() {
-		return mapper.selectTotalCount();
+	public int totalCount(SearchDTO search) {
+		return mapper.selectTotalCount(search);
 	}
 
 	@Override

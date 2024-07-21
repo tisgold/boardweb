@@ -40,7 +40,9 @@
   <%
     String name = (String) request.getAttribute("myName");
     List<BoardVO> list = (List<BoardVO>) request.getAttribute("boardList");
-    PageDTO paging = (PageDTO) request.getAttribute("paging"); 
+    PageDTO paging = (PageDTO) request.getAttribute("paging");
+    String sc = (String) request.getAttribute("searchCondition");
+    String kw = (String) request.getAttribute("keyword");
   %>
     <tbody>
       <%for (BoardVO board : list) { %>
@@ -60,21 +62,22 @@
     <!-- prev 페이지 -->
     <% if (paging.isPrev()) { %>
     <li class="page-item">
-      <a class="page-link" href="boardList.do?page=<%=paging.getStartPage()-1 %>" tabindex="-1" aria-disabled="true">이전</a>
+      <a class="page-link" href="boardList.do?searchCondition=<%=sc %>&keyword=<%=kw %>&page=<%=paging.getStartPage()-1 %>" tabindex="-1" aria-disabled="true">이전</a>
     </li>
     <% } %>
     <!-- 페이지갯수만큼 링크생성 -->
     <% for(int p = paging.getStartPage(); p <= paging.getEndPage(); p++) { %>
       <% if (paging.getPage() == p) { %>
-        <li class="page-item active" aria-current="page"><a class="page-link" href="boardList.do?page=<%=p %>"><%=p %></a></li>
+        <li class="page-item active" aria-current="page">
+        <a class="page-link" href="boardList.do?searchCondition=<%=sc %>&keyword=<%=kw %>&page=<%=p %>"><%=p %></a></li>
       <% } else { %>
-        <li class="page-item"><a class="page-link" href="boardList.do?page=<%=p %>"><%=p %></a></li>
+        <li class="page-item"><a class="page-link" href="boardList.do?searchCondition=<%=sc %>&keyword=<%=kw %>&page=<%=p %>"><%=p %></a></li>
       <% } %>
     <% } %>
     <!-- next 페이지 -->
     <% if (paging.isNext()) { %>
     <li class="page-item">
-      <a class="page-link" href="boardList.do?page=<%=paging.getEndPage()+1 %>">다음</a>
+      <a class="page-link" href="boardList.do?searchCondition=<%=sc %>&keyword=<%=kw %>&page=<%=paging.getEndPage()+1 %>">다음</a>
     </li>
     <% } %>
   </ul>

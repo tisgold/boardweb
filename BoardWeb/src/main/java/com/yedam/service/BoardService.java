@@ -12,7 +12,8 @@ import com.yedam.vo.BoardVO;
  */
 public interface BoardService {
 	List<BoardVO> boardList(SearchDTO search);
-	int totalCount(); // 페이징 계산용 건수
+//	int totalCount(); // 페이징 계산용 건수
+	int totalCount(SearchDTO search);
 	boolean addBoard(BoardVO board);
 	boolean modifyBoard(BoardVO board);
 	boolean removeBoard(int boardNo);

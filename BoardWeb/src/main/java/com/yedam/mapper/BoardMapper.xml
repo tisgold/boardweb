@@ -56,6 +56,19 @@
   <select id="selectTotalCount">
     select count(1)
     from tbl_board
+    where
+      <choose>
+        <when test="searchCondition == 'T'.toString() ">
+          title like '%'||#{keyword}||'%'
+        </when>
+        <when test="searchCondition == 'W'.toString() ">
+          writer like '%'||#{keyword}||'%'
+        </when>
+        <when test="searchCondition == 'TW'.toString() ">
+          title like '%'||#{keyword}||'%' or writer like '%'||#{keyword}||'%'
+        </when>
+        <otherwise>1 = 1</otherwise>
+      </choose>
   </select>
   
   <insert id="insertBoard" parameterType="com.yedam.vo.BoardVO">
