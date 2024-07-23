@@ -1,0 +1,14 @@
+--20240723
+
+select *
+from tbl_member
+order by member_id;
+
+select *
+from tbl_board
+order by board_no desc;
+
+insert into tbl_member (member_id, member_pw, member_nm, responsibility)
+values('admin', '1111', '김관리', 'Admin');
+
+commit;
