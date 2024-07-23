@@ -1,0 +1,76 @@
+-- 20240719
+
+select *
+from tbl_board
+order by board_no;
+
+-- 현재 있는 건수의 배수로 자동으로 데이터 채워줌
+insert into tbl_board (board_no, writer, title, content)
+select board_seq.nextval, writer, title, content
+from tbl_board;
+
+commit;
+
+-- 페이징 : 출력되는 데이터가 많으면 한 페이지에 5개씩 여러 페이지에 나눠서 보여주기
+-- 1) 페이지당 10건씩 가져오는 쿼리
+-- 2) 전체건수 / 10건 => 전체 페이지를 계산
+
+-- rownum : 가져온 데이터에 순번을 매김
+
+select b.*
+from (select rownum rn, a.*
+     from (select *
+          from tbl_board
+          order by board_no) a ) b
+where b.rn > (:page - 1) * 10 -- :매겨변수
+and   b.rn <= (:page * 10);
+
+select count(1)
+from tbl_board;
+
+select *
+from tbl_board b
+where title like '%java%';
+
+select *
+from tbl_board b
+where writer like '%user%';
+
+select *
+from tbl_board b
+where title like '%test%'
+or writer like '%test%';
+
+select b.*
+from (select rownum rn, a.*
+     from (select *
+          from tbl_board
+          --where title like '%test%'
+          --where writer like '%test%'
+          --where title like '%test%'or writer like '%test%'
+          order by board_no) a ) b
+where b.rn > (:page - 1) * 10 -- :매겨변수
+and   b.rn <= (:page * 10);
+
+-- Ctrl + F7 : 자동 정렬
+SELECT b.*
+FROM    (
+        SELECT
+            ROWNUM rn,
+            a.*
+        FROM
+            (
+                SELECT
+                    *
+                FROM
+                    tbl_board
+                WHERE
+                    writer LIKE '%' || 'user'
+                                       || '%'
+                ORDER BY
+                    board_no
+            ) a
+    ) b
+WHERE
+        b.rn > ( 1 - 1 ) * 10
+    AND b.rn <= ( 1 * 10 );

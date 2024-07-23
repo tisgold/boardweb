@@ -1,0 +1,27 @@
+-- 게시판(게시글번호, 제목, 내용, 작성자, 작성일시, 조회수)
+
+create table tbl_board (
+  board_no number,
+  title varchar2(100) not null,
+  content varchar2(500) not null,
+  writer varchar2(100) not null,
+  write_date date default sysdate,
+  view_cnt number default 0
+);
+
+create sequence board_seq;
+
+alter table tbl_board add constraint board_pk primary key(board_no);
+
+-- user01 웹은 재밌습니다/ html,jsp공부하고 좋습니다.
+insert into tbl_board (board_no, writer, title, content)
+values(board_seq.nextval, 'user01', '웹은 재밌습니다', 'html,jsp공부하고 좋습니다.');
+insert into tbl_board (board_no, writer, title, content)
+values(board_seq.nextval, 'chacha', 'java도 잼따', 'java 도 좋습니다.');
+insert into tbl_board (board_no, writer, title, content)
+values(board_seq.nextval, 'test', '글쓰기 test', '잘써집니다..');
+insert into tbl_board (board_no, writer, title, content)
+values(board_seq.nextval, 'user02', 'javascript 좋음.', 'javascript 도 좋습니다.');
+
+select *
+from tbl_board;

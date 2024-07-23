@@ -21,7 +21,7 @@ public class AddBoardControl implements Control {
 		String writer = req.getParameter("writer");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		
+
 		// 파일전송 multipart/form-data 방식 => cos라이브러리
 		// 1.파일업로드 (images) 2.정보 DB입력
 		String savePath = req.getServletContext().getRealPath("images");
@@ -37,18 +37,18 @@ public class AddBoardControl implements Control {
 		title = request.getParameter("title");
 		content = request.getParameter("content");
 		String image = request.getFilesystemName("img");
-		
+
 		BoardVO board = new BoardVO();
 		board.setWriter(writer);
 		board.setTitle(title);
 		board.setContent(content);
 		board.setImage(image);
-		
+
 		BoardService svc = new BoardServiceImpl();
 		if(svc.addBoard(board)) {
 			// 목록이동
 			resp.sendRedirect("boardList.do");
 		}
 	}
-	
+
 }

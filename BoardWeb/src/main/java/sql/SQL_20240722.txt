@@ -1,0 +1,28 @@
+-- 20240722
+
+--사용자 테이블(아이디, 비밀번호, 회원이름, 권한)
+create table tbl_member (
+  member_id varchar2(30) primary key,
+  member_pw varchar2(10) not null,
+  member_nm varchar2(50) not null,
+  responsibility varchar2(10) default 'User' -- 'Admin'
+);
+
+insert into tbl_member (member_id, member_pw, member_nm)
+values('user01', '1111', '홍길동');
+insert into tbl_member (member_id, member_pw, member_nm)
+values('user02', '2222', '권민석');
+insert into tbl_member (member_id, member_pw, member_nm)
+values('chacha', '1111', '김차차');
+
+select *
+from tbl_member;
+
+commit;
+
+
+alter table tbl_board add image varchar2(100);
+
+select *
+from tbl_board
+order by board_no;

@@ -11,7 +11,7 @@ import com.yedam.vo.BoardVO;
 
 /*
  * 인터페이스(BoardService)를 구현하는 구현객체
- * 인터페이스에 정의된 메소드를 다 구현해야함 
+ * 인터페이스에 정의된 메소드를 다 구현해야함
  */
 public class BoardServiceImpl implements BoardService {
 	SqlSession sqlSession = DataSource.getInstance().openSession(true);
@@ -22,7 +22,7 @@ public class BoardServiceImpl implements BoardService {
 //		return mapper.selectList();
 		return mapper.selectListPaging(search);
 	}
-	
+
 	@Override
 	public int totalCount(SearchDTO search) {
 		return mapper.selectTotalCount(search);

@@ -18,14 +18,14 @@ public class UpdateBoard implements Control {
 		String bno = req.getParameter("bno");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		
+
 		BoardVO board = new BoardVO();
 		board.setBoardNo(Integer.parseInt(bno));
 		board.setTitle(title);
 		board.setContent(content);
-		
+
 		BoardService svc = new BoardServiceImpl();
-			
+
 		if(svc.modifyBoard(board)) {
 			resp.sendRedirect("boardList.do");
 		}

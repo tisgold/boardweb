@@ -21,6 +21,7 @@ import com.yedam.control.DeleteBoard;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginForm;
 import com.yedam.control.LogoutControl;
+import com.yedam.control.MemberListControl;
 import com.yedam.control.ModBoardControl;
 import com.yedam.control.StudentListControl;
 import com.yedam.control.UpdateBoard;
@@ -32,11 +33,11 @@ import com.yedam.control.UpdateBoard;
  */
 public class FrontController extends HttpServlet {
 	Map<String, Control> map;
-	
+
 	public FrontController() {
 		map = new HashMap<>();
 	}
-	
+
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/boardList.do", new BoardListControl());
@@ -52,22 +53,25 @@ public class FrontController extends HttpServlet {
 		map.put("/loginForm.do", new LoginForm()); // 로그인 화면
 		map.put("/login.do", new LoginControl()); // 실제 로그인 기능
 		map.put("/logout.do", new LogoutControl()); // 로그아웃 기능
-		
+
+		// 관리자가 사용하는 기능들.. ex)회원목록
+		map.put("/memberList.do", new MemberListControl());
+
 		// 학생목록
 		map.put("/stdList.do", new StudentListControl());
 		// 태그연습
 		map.put("/action.do", new ActionControl());
 	}
-	
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// boardList.do - 목록, addBoard.do - 등록
 		String uri = req.getRequestURI(); // URL(http://localhost/BoardWeb/boardList.do) vs URI(/BoardWeb/boardList.do)
 		String context = req.getContextPath(); // 프로젝트명
 		String path = uri.substring(context.length()); // "/boardList.d"
-		
+
 		System.out.println(path);
-		
+
 		Control sub = map.get(path);
 		sub.exec(req, resp);
 	}

@@ -1,0 +1,40 @@
+lombok
+
+1. 설치
+
+java -jar lombok.jar
+
+
+- add lombok.jar to your projects,
+- exit and start your IDE,
+- rebuild all projects!
+
+
+2. 라이브러리 다운로드
+
+maven repository 이동
+
+lombok 검색
+
+jar 다운로드 후
+
+프로젝트 부모 폴드에 복사
+
+build path에 경로 지정 후 
+
+import lombok.Data;
+//import lombok.Getter;
+//import lombok.Setter;
+//import lombok.ToString;
+
+//@Getter
+//@Setter
+//@ToString
+@Data
+
+
+- MyBatis
+
+사이트로 이동해서 설명대로 설치
+
+build path에 추가

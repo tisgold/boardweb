@@ -1,0 +1,19 @@
+Apache Tomcat
+
+tomcat 9
+버전에 맞는 윈도우 64비트.zip 다운로드
+
+eclipse
+
+preferences
+
+server - runtime environments 에서
+
+Apache Tomcat v9.0
+
+
+
+configure -> Maven 프로젝트로 변환
+
+group id: 회사정보 (도메인 이름)
+artifact id: 프로젝트 이름

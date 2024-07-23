@@ -22,27 +22,27 @@ public class BoardListControl implements Control {
 		page = page == null ? "1" : page;
 		String sc = req.getParameter("searchCondition");
 		String kw = req.getParameter("keyword");
-		
+
 		SearchDTO search = new SearchDTO();
 		search.setKeyword(kw);
 		search.setPage(Integer.parseInt(page));
 		search.setSearchCondition(sc);
-		
+
 		req.setAttribute("myName", "홍길동");
-		
+
 		BoardService svc = new BoardServiceImpl();
-		
+
 		List<BoardVO> list = svc.boardList(search);
 		req.setAttribute("boardList", list);
-		
+
 		// paging
 		int totalCnt = svc.totalCount(search);
 		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), totalCnt);
 		req.setAttribute("paging", pageDTO);
 		req.setAttribute("searchCondition", sc);
 		req.setAttribute("keyword", kw);
-		
-		req.getRequestDispatcher("WEB-INF/jsp/boardList.jsp").forward(req, resp);
+
+		req.getRequestDispatcher("board/boardList.tiles").forward(req, resp);
 	}
 
 }

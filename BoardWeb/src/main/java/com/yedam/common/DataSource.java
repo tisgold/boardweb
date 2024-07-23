@@ -17,7 +17,7 @@ public class DataSource {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		SqlSessionFactory sqlSessionFactory 
+		SqlSessionFactory sqlSessionFactory
 			= new SqlSessionFactoryBuilder().build(inputStream);
 		return sqlSessionFactory;
 	}

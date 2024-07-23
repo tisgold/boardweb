@@ -16,13 +16,13 @@ public class ModBoardControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String bno = req.getParameter("bno");
-		
+
 		BoardService svc = new BoardServiceImpl();
 		BoardVO board = svc.getBoard(Integer.parseInt(bno));
-		
+
 		req.setAttribute("board", board);
-	
-		req.getRequestDispatcher("WEB-INF/jsp/modifyForm.jsp").forward(req, resp);
+
+		req.getRequestDispatcher("board/modifyForm.tiles").forward(req, resp);
 
 	}
 

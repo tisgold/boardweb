@@ -1,0 +1,12 @@
+로깅 설정
+
+SLF4J
+
+Logging Configuration
+
+1. maven -> logback
+
+2. logback.xml 생성
+<logger name="com.yedam.mapper.BoardMapper"> 변경
+<level value="debug"/> 변경
+

@@ -17,32 +17,34 @@ import com.yedam.vo.StudentVO;
 @WebServlet("/StudentAddServ")
 public class StudentAddServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     public StudentAddServ() {
         super();
     }
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// sno=S2024-08&sname=박기영&sphone=010-1111-2222&sbirth=2000-05-05
 		String sno = request.getParameter("sno");
 		String sname = request.getParameter("sname");
 		String phone = request.getParameter("sphone");
 		String birth = request.getParameter("sbirth");
-		
+
 		StudentVO svo = new StudentVO();
 		svo.setStdNo(sno);
 		svo.setStdName(sname);
 		svo.setStdPhone(phone);
 		svo.setBirthDate(birth);
-		
+
 		SqlSession sqlSession = DataSource.getInstance().openSession(true);
 		StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
-		
+
 		mapper.insertStudent(svo);
-		
+
 		response.sendRedirect("SampleServlet");
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
