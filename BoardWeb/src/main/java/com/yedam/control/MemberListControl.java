@@ -16,9 +16,12 @@ public class MemberListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String order = req.getParameter("order");
+		String orderBy = req.getParameter("order");
+		orderBy = orderBy == null ? "member_id" : orderBy;
+		String res = req.getParameter("res");
+		res = res == null ? "User" : res;
 		MemberService svc = new MemberServiceImpl();
-		List<MemberVO> list = svc.selectList(order);
+		List<MemberVO> list = svc.selectList(orderBy, res);
 				
 		req.setAttribute("members", list);
 		req.getRequestDispatcher("admin/memberList.tiles").forward(req, resp);

@@ -10,15 +10,15 @@
     where member_id = #{id}
     and   member_pw = #{pw}
   </select>
-  
+   
   <select id="selectList" parameterType="string" resultType="com.yedam.vo.MemberVO">
     select member_id
           ,member_pw
           ,member_nm
           ,responsibility
     from tbl_member
-    where responsibility = 'User'
-    order by #{order }
+    where responsibility = #{res}
+    order by ${orderBy}
   </select>
   
 </mapper>

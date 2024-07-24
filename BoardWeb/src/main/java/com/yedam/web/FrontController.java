@@ -16,6 +16,7 @@ import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardForm;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.ChartControl;
 import com.yedam.control.DelBoardControl;
 import com.yedam.control.DeleteBoard;
 import com.yedam.control.LoginControl;
@@ -23,7 +24,9 @@ import com.yedam.control.LoginForm;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MemberListControl;
 import com.yedam.control.ModBoardControl;
+import com.yedam.control.ScriptControl;
 import com.yedam.control.StudentListControl;
+import com.yedam.control.TableControl;
 import com.yedam.control.UpdateBoard;
 
 /*
@@ -54,13 +57,19 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new LoginControl()); // 실제 로그인 기능
 		map.put("/logout.do", new LogoutControl()); // 로그아웃 기능
 
-		// 관리자가 사용하는 기능들.. ex)회원목록
-		map.put("/memberList.do", new MemberListControl());
-
 		// 학생목록
 		map.put("/stdList.do", new StudentListControl());
 		// 태그연습
 		map.put("/action.do", new ActionControl());
+		
+		// 관리자가 사용하는 기능들.. ex)회원목록
+		map.put("/memberList.do", new MemberListControl());
+		map.put("/chart.do", new ChartControl());
+		map.put("/tables.do", new TableControl());
+		
+		// 자바스크립트 연습하는 페이지 호출
+		map.put("/javascript.do", new ScriptControl());
+
 	}
 
 	@Override

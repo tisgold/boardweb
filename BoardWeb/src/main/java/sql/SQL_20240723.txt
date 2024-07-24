@@ -1,14 +1,131 @@
---20240723
+-- 20240718
+
+drop table tbl_board;
+
+create table tbl_board (
+  board_no number,
+  writer varchar2(100) not null,
+  title varchar2(100) not null,
+  content varchar2(500) not null,
+  write_date date default sysdate,
+  view_cnt number default 0
+);
+
+drop sequence board_seq;
+
+create sequence board_seq;
+
+alter table tbl_board add constraint board_pk primary key(board_no);
+
+-- user01 웹은 재밌습니다/ html,jsp공부하고 좋습니다.
+insert into tbl_board (board_no, writer, title, content)
+values(board_seq.nextval, 'user01', '웹은 재밌습니다', 'html,jsp 공부하고 좋습니다.');
+insert into tbl_board (board_no, writer, title, content)
+values(board_seq.nextval, 'user02', 'javascript 좋음', 'javascript도 좋습니다.');
+insert into tbl_board (board_no, writer, title, content)
+values(board_seq.nextval, 'user03', 'jsp 흥미롭네요', 'jsp 좋습니다.');
+insert into tbl_board (board_no, writer, title, content)
+values(board_seq.nextval, 'chacha', 'java도 잼따', 'java 도 좋습니다.');
+insert into tbl_board (board_no, writer, title, content)
+values(board_seq.nextval, 'test', '글쓰기 테스트', '잘써집니다...');
+
+select *
+from tbl_board
+order by board_no;
+
+commit;
+
+
+-- 20240719
+
+-- 현재 있는 건수의 배수로 자동으로 데이터 채워줌
+insert into tbl_board (board_no, writer, title, content)
+select board_seq.nextval, writer, title, content
+from tbl_board;
+
+commit;
+
+-- 페이징 : 출력되는 데이터가 많으면 한 페이지에 5개씩 여러 페이지에 나눠서 보여주기
+-- 1) 페이지당 5건씩 가져오는 쿼리
+-- 2) 전체건수 / 5건 => 전체 페이지를 계산
+
+-- rownum : 가져온 데이터에 순번을 매김
+
+select b.*
+from (select rownum rn, a.*
+     from (select *
+          from tbl_board
+          order by board_no) a ) b
+where b.rn > (:page - 1) * 5 -- :매겨변수
+and   b.rn <= (:page * 5);
+
+select count(1)
+from tbl_board;
+
+select *
+from tbl_board b
+where title like '%java%';
+
+select *
+from tbl_board b
+where writer like '%user%';
+
+select *
+from tbl_board b
+where title like '%test%'
+or writer like '%test%';
+
+select b.*
+from (select rownum rn, a.*
+     from (select *
+          from tbl_board
+          --where title like '%test%'
+          --where writer like '%test%'
+          --where title like '%test%'or writer like '%test%'
+          order by board_no) a ) b
+where b.rn > (:page - 1) * 5 -- :매겨변수
+and   b.rn <= (:page * 5);
+
+-- Ctrl + F7 : 자동 정렬
+
+
+-- 20240722
+
+--사용자 테이블(아이디, 비밀번호, 회원이름, 권한)
+create table tbl_member (
+  member_id varchar2(30) primary key,
+  member_pw varchar2(10) not null,
+  member_nm varchar2(50) not null,
+  responsibility varchar2(10) default 'User' -- 'Admin'
+);
+
+insert into tbl_member (member_id, member_pw, member_nm)
+values('user01', '1111', '홍길동');
+insert into tbl_member (member_id, member_pw, member_nm)
+values('user02', '2222', '권민석');
+insert into tbl_member (member_id, member_pw, member_nm)
+values('chacha', '1111', '김차차');
 
 select *
 from tbl_member
 order by member_id;
 
+commit;
+
+alter table tbl_board add image varchar2(100);
+
 select *
 from tbl_board
 order by board_no desc;
 
+
+-- 20240723
+
 insert into tbl_member (member_id, member_pw, member_nm, responsibility)
 values('admin', '1111', '김관리', 'Admin');
+insert into tbl_member (member_id, member_pw, member_nm, responsibility)
+values('manager', '1111', '이관리', 'Admin');
+insert into tbl_member (member_id, member_pw, member_nm)
+values('user03', '3333', '최우수');
 
 commit;
