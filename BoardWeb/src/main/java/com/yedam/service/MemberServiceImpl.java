@@ -21,4 +21,5 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> selectList(String orderBy, String res) {
 		return mapper.selectList(orderBy, res);
 	}
+
 }

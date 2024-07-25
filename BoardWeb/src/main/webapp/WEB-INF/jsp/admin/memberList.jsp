@@ -26,23 +26,9 @@
 	<thead>
 	  <tr>
 	    <th scope="col">#</th>
-	    <c:choose>
-	      <c:when test="${res eq 'User' }">
-	        <th scope="col"><a href="memberList.do?res=User&order=member_id">아이디</a></th>
-	      </c:when>
-	      <c:otherwise>
-	        <th scope="col"><a href="memberList.do?res=Admin&order=member_id">아이디</a></th>
-	      </c:otherwise>
-	    </c:choose>
+        <th scope="col"><a href="memberList.do?res=${res }&order=member_id">아이디</a></th>
 	    <th scope="col">비밀번호</th>
-	    <c:choose>
-	      <c:when test="${res eq 'User' }">
-	    <th scope="col"><a href="memberList.do?res=User&order=member_nm">이름</a></th>
-	      </c:when>
-	      <c:otherwise>
-	      <th scope="col"><a href="memberList.do?res=Admin&order=member_nm">이름</a></th>
-	      </c:otherwise>
-	    </c:choose>
+	    <th scope="col"><a href="memberList.do?res=${res }&order=member_nm">이름</a></th>
 	    <th scope="col">권한</th>
 	  </tr>
 	</thead>  
