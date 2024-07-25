@@ -61,12 +61,12 @@ public class FrontController extends HttpServlet {
 		map.put("/stdList.do", new StudentListControl());
 		// 태그연습
 		map.put("/action.do", new ActionControl());
-		
+
 		// 관리자가 사용하는 기능들.. ex)회원목록
 		map.put("/memberList.do", new MemberListControl());
 		map.put("/chart.do", new ChartControl());
 		map.put("/tables.do", new TableControl());
-		
+
 		// 자바스크립트 연습하는 페이지 호출
 		map.put("/javascript.do", new ScriptControl());
 

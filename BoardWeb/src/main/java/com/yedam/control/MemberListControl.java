@@ -22,7 +22,7 @@ public class MemberListControl implements Control {
 		res = res == null ? "User" : res;
 		MemberService svc = new MemberServiceImpl();
 		List<MemberVO> list = svc.selectList(orderBy, res);
-				
+
 		req.setAttribute("members", list);
 		req.getRequestDispatcher("admin/memberList.tiles").forward(req, resp);
 	}
