@@ -1,0 +1,80 @@
+-- 20240726
+
+select *
+from tbl_board;
+
+-- 댓글 (댓글번호, 댓글내용, 작성자, 작성일시, 원본게시글번호)
+create table tbl_reply (
+  reply_no number,
+  reply_content varchar2(300) not null,
+  replyer varchar2(10) not null,
+  reply_date date default sysdate,
+  board_no number not null
+);
+
+create sequence reply_seq;
+
+alter table tbl_reply add constraint reply_pk primary key(reply_no);
+-- reply_pk 인덱스 이름이기도 함
+
+-- user01 148번 댓글등록 "글잘봤습니다" 등록
+insert into tbl_reply (reply_no, reply_content, replyer, board_no)
+values(reply_seq.nextval, '글잘봤습니다', 'user01', 147);
+insert into tbl_reply (reply_no, reply_content, replyer, board_no)
+values(reply_seq.nextval, '저도 글잘봤습니다', 'user02', 147);
+
+insert into tbl_reply (reply_no, reply_content, replyer, board_no)
+values(reply_seq.nextval, '글잘봤습니다', 'user01', 143);
+insert into tbl_reply (reply_no, reply_content, replyer, board_no)
+values(reply_seq.nextval, '저도 글잘봤습니다', 'user02', 143);
+
+insert into tbl_reply (reply_no, reply_content, replyer, board_no)
+values(reply_seq.nextval, '글잘봤습니다', 'user01', 148);
+insert into tbl_reply (reply_no, reply_content, replyer, board_no)
+values(reply_seq.nextval, '저도 글잘봤습니다', 'user02', 148);
+
+
+insert into tbl_reply (reply_no, reply_content, replyer, board_no)
+select reply_seq.nextval, reply_content, replyer, board_no
+from tbl_reply
+where board_no = 148;
+
+commit;
+
+-- 댓글 목록
+select *
+from tbl_reply
+where board_no = 147
+order by board_no;
+
+-- 댓글 삭제
+delete from tbl_reply
+where reply_no = 4;
+
+select *
+from tbl_reply;
+
+select /*+ INDEX (r reply_pk) */ *
+from tbl_reply r;
+-- 역순 INDEX_DESC
+
+select b.*
+from (select /*+ INDEX_DESC (r reply_pk) */ rownum rn, r.*
+      from tbl_reply r) b
+where b.rn > 5
+and   b.rn <= 10;
+
+select b.*
+from (select /*+ INDEX_DESC (r reply_pk) */ rownum rn, r.*
+      from tbl_reply r) b
+where b.rn > (:page - 1) * 5
+and   b.rn <= (:page * 5);
+
+-- 이전 참고
+select b.*
+from (select rownum rn, a.*
+     from (select *
+          from tbl_board
+          order by board_no) a ) b
+where b.rn > (:page - 1) * 10 -- :매개변수
+and   b.rn <= (:page * 10);

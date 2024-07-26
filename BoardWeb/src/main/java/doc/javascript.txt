@@ -1,0 +1,5 @@
+1. 요소를 생성할 때 : document.createElement('요소명');
+2. 부모-자식 관계를 지어줄 때 : 부모.appendChild(자식);
+3. <span>값</span> : span.innerHTML = 값;
+4. document.querySelector('선택자');
+5. document.querySelectorAll('선택자');
