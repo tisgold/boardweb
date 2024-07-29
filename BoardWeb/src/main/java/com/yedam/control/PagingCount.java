@@ -10,23 +10,19 @@ import com.yedam.common.Control;
 import com.yedam.service.ReplyService;
 import com.yedam.service.ReplyServiceImpl;
 
-public class RemoveReplyControl implements Control {
+public class PagingCount implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String repno = req.getParameter("rno");
+		// 글번호 => 댓글건수
 		String bno = req.getParameter("bno");
 		
 		ReplyService svc = new ReplyServiceImpl();
+		int totalCnt = svc.replyTotalCnt(Integer.parseInt(bno));
 		
-		req.setAttribute("bno", bno);
-		if(svc.removeReply(Integer.parseInt(repno))) {
-			resp.getWriter().print("{\"retCode\": \"Success\"}");
-		}
-		else {
-			resp.getWriter().print("{\"retCode\": \"Fail\"}");
-		}
-				
+		// {"totalCount": 30} 반환 형식
+		resp.getWriter().print("{\"totalCount\": " + totalCnt + "}");
+
 	}
 
 }

@@ -19,13 +19,11 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public boolean removeStudent(String sno) {
-		// TODO Auto-generated method stub
 		return mapper.deleteStudent(sno) == 1;
 	}
 
 	@Override
 	public boolean addStudent(StudentVO svo) {
-		// TODO Auto-generated method stub
 		return mapper.insertStudent(svo) == 1;
 	}
 

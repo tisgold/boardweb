@@ -3,6 +3,7 @@
  * 목록, 등록, 삭제 기능을 정의
  */
 const svc = {
+	// 목록
 	replyList(param = {bno, page}, loadCallback) {
 		const xhtp = new XMLHttpRequest();
  		xhtp.open('get', 'replyList.do?bno=' + param.bno + '&page=' + param.page);
@@ -24,5 +25,13 @@ const svc = {
 		xhtp.open('get', 'removeReply.do?rno=' + rno);
 		xhtp.send();
 		xhtp.onload = loadCallback;
-	} // end of removeReply
+	}, // end of removeReply
+	
+	// 댓글개수
+	pagingCount(bno = 1, loadCallback) {
+		const xhtp = new XMLHttpRequest();
+		xhtp.open('get', 'pagingCount.do?bno=' + bno);
+		xhtp.send();
+		xhtp.onload = loadCallback;
+	}
 } // end of svc

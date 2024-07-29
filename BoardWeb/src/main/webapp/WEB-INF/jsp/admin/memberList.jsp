@@ -7,18 +7,18 @@
     <c:choose>
       <c:when test="${res eq 'User' }">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="memberList.do?res=User&order=${order }">사용자</a>
+        <a class="nav-link active" aria-current="page" href="memberList.do?res=User">사용자</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" aria-disabled="true" href="memberList.do?res=Admin&order=${order }">관리자</a>
+        <a class="nav-link" aria-disabled="true" href="memberList.do?res=Admin">관리자</a>
       </li>
       </c:when>
       <c:otherwise>
       <li class="nav-item">
-        <a class="nav-link" aria-disabled="true" href="memberList.do?res=User&order=${order }">사용자</a>
+        <a class="nav-link" aria-disabled="true" href="memberList.do?res=User">사용자</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="memberList.do?res=Admin&order=${order }">관리자</a>
+        <a class="nav-link active" aria-current="page" href="memberList.do?res=Admin">관리자</a>
       </li>
       </c:otherwise>
     </c:choose>
@@ -28,7 +28,7 @@
 	  <th scope="col">#</th>
 	  <th scope="col"><a href="memberList.do?res=${res }&order=member_id">아이디</a></th>
 	  <th scope="col">비밀번호</th>
-	  <th scope="col"><a href="memberList.do?res=res=${res }&order=member_nm">이름</a></th>
+	  <th scope="col"><a href="memberList.do?res=${res }&order=member_nm">이름</a></th>
 	  <th scope="col">권한</th>
 	</tr>
   </thead>  
