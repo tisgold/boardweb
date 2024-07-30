@@ -1,0 +1,28 @@
+document.querySelectorAll('ul.cate_prd_list>li>div.prd_info>a>img').forEach(image => console.log(image));
+
+
+let prodAry = [];
+document.querySelectorAll('ul.cate_prd_list>li>div.prd_info').forEach(item => {
+	let imgSrc = item.querySelector('a>img').src;
+	let prdName = item.querySelector('div.prd_name p.tx_name').innerHTML;
+	let prdCode = item.querySelector('a').dataset.refGoodsno;
+	let prdPrice = item.querySelector('p.prd_price span.tx_num').innerHTML;
+	// console.log(imgSrc, prdName, prdCode, prdPrice);
+	prodAry.push({imgSrc, prdName, prdCode, prdPrice});
+});
+
+let json = JSON.stringify(prodAry);
+
+json;
+
+Copy string as JSON literal (우클)
+
+
+
+
+
+maven repository
+
+spring-core
+
+jackson-databind

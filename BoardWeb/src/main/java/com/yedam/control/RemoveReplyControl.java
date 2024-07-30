@@ -19,7 +19,7 @@ public class RemoveReplyControl implements Control {
 		
 		ReplyService svc = new ReplyServiceImpl();
 		
-		req.setAttribute("bno", bno);
+//		req.setAttribute("bno", bno);
 		if(svc.removeReply(Integer.parseInt(repno))) {
 			resp.getWriter().print("{\"retCode\": \"Success\"}");
 		}

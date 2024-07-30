@@ -33,5 +33,5 @@ const svc = {
 		xhtp.open('get', 'pagingCount.do?bno=' + bno);
 		xhtp.send();
 		xhtp.onload = loadCallback;
-	}
+	} // end of pagingCount
 } // end of svc

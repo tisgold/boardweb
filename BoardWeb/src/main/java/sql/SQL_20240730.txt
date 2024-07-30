@@ -1,0 +1,600 @@
+-- 20240730
+
+-- drop table tbl_product;
+
+-- 상품코드, 상품명, 가격, 설명(x), 이미지
+CREATE TABLE tbl_product (
+    prod_code  VARCHAR2(30),
+    prod_name  VARCHAR2(100),
+    prod_price NUMBER,
+    prod_desc  VARCHAR2(1000),
+    prod_image VARCHAR2(100)
+);
+
+-- insert into tbl_product (prod_code, prod_name, prod_price, prod_image)
+-- values();
+
+-- Ctrl + F7 : 정렬
+
+select *
+from tbl_product;
+
+commit;
+
+
+-- 데이터 삽입
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000142695',
+    '오쏘몰 이뮨 멀티비타민 미네랄 7입 (1주분)',
+    '38000',
+    '오쏘몰 이뮨 멀티비타민 미네랄 7입 (1주분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000189087',
+    '[3만원 이상 구매시 보조배터리 증정]아임비타 멀티비타민 이뮨샷 12+2입 증정기획 (14일분)',
+    '35900',
+    '[3만원 이상 구매시 보조배터리 증정]아임비타 멀티비타민 이뮨샷 12+2입 증정기획 (14일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000193086',
+    '오쏘몰 이뮨 멀티비타민 미네랄 14입+2입(오쏘몰 바이탈 M/F 증정기획)',
+    '75000',
+    '오쏘몰 이뮨 멀티비타민 미네랄 14입+2입(오쏘몰 바이탈 M/F 증정기획).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000002944',
+    '고려은단 비타민C1000 120정 (4개월분)',
+    '15000',
+    '고려은단 비타민C1000 120정 (4개월분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000150977',
+    '센트룸 멀티 구미 40정 (20일분)',
+    '13500',
+    '센트룸 멀티 구미 40정 (20일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000164736',
+    '고려은단 비타민C1000 이지+비타민D 120정 (60일분)',
+    '13000',
+    '고려은단 비타민C1000 이지+비타민D 120정 (60일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000166574',
+    '고려은단 멀티비타민 올인원 30정 (30일분)',
+    '14900',
+    '고려은단 멀티비타민 올인원 30정 (30일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000185634',
+    '뉴칸 더블파워 밀크씨슬+멀티비타민 30개입 (30일분)',
+    '128000',
+    '뉴칸 더블파워 밀크씨슬+멀티비타민 30개입 (30일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000181033',
+    '프레스샷 올인원 토탈 영양 앰플 10개입 (10일분)',
+    '29900',
+    '프레스샷 올인원 토탈 영양 앰플 10개입 (10일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000189216',
+    '[슈야 토야] 닥터브라이언 복숭아맛 비타민C D 3000 100+15구미 기획 (38일분)',
+    '15900',
+    '[슈야 토야] 닥터브라이언 복숭아맛 비타민C D 3000 100+15구미 기획 (38일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000112145',
+    '네이처메이드 슈퍼B 에너지 콤플렉스 180정 (3개월분)',
+    '33000',
+    '네이처메이드 슈퍼B 에너지 콤플렉스 180정 (3개월분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'B000000206714',
+    'GNM 올인원 이뮨 액상 종합비타민 트리플샷 7입 3박스 (21일분)',
+    '79900',
+    'GNM 올인원 이뮨 액상 종합비타민 트리플샷 7입 3박스 (21일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000189372',
+    '마그랩 포 에너지 글루콘산마그네슘 25ml*10+2입 선물세트',
+    '39000',
+    '마그랩 포 에너지 글루콘산마그네슘 25ml*10+2입 선물세트.jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000146963',
+    '허벌랜드 비타민C 구미 60구미 (1개월분)',
+    '23700',
+    '허벌랜드 비타민C 구미 60구미 (1개월분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000176910',
+    '엔젯오리진 에너지 비타민B-컴플렉스 구미(청포도향) 3,000mg 60구미 (30일분)',
+    '12800',
+    '엔젯오리진 에너지 비타민B-컴플렉스 구미(청포도향) 3,000mg 60구미 (30일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000174999',
+    '비타바움 비타민B12플러스 브이 컴플렉스 8 (12병입) (12일분)',
+    '49000',
+    '비타바움 비타민B12플러스 브이 컴플렉스 8 (12병입) (12일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000164738',
+    '고려은단 비타민C 골드플러스 120정 (120일분)',
+    '29800',
+    '고려은단 비타민C 골드플러스 120정 (120일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000174691',
+    '아임비타 면역비타민C 1000 (60포) (30일분)',
+    '21900',
+    '아임비타 면역비타민C 1000 (60포) (30일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000189910',
+    '경남 레모나 구미 60구미 (30일분) (멀티비타민+미네랄/루테인+A/비오틴+B) 3 중 택1',
+    '18900',
+    '경남 레모나 구미 60구미 (30일분) (멀티비타민+미네랄/루테인+A/비오틴+B) 3 중 택1.jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000175000',
+    '비타바움 멀티비타민 플러스 브이 컴플렉스 15 (12병입) (12일분)',
+    '49000',
+    '비타바움 멀티비타민 플러스 브이 컴플렉스 15 (12병입) (12일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000187253',
+    '고려은단 메가도스B7 활성비오틴 60정 (2개월분)',
+    '14900',
+    '고려은단 메가도스B7 활성비오틴 60정 (2개월분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000151410',
+    '경남 레모나산 70포 (70일분)',
+    '19800',
+    '경남 레모나산 70포 (70일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000191434',
+    '프레스샷 마그코어 10개입 (10일분)',
+    '39900',
+    '프레스샷 마그코어 10개입 (10일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000112068',
+    '블랙모어스 칼슘마그네슘 플러스비타민D 60정+60정 (2개월분)',
+    '65000',
+    '블랙모어스 칼슘마그네슘 플러스비타민D 60정+60정 (2개월분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000176911',
+    '엔젯오리진 엘더베리 플레이버 비타민 C D, 아연 3,000mg 70구미 (35일분)',
+    '13800',
+    '엔젯오리진 엘더베리 플레이버 비타민 C D, 아연 3,000mg 70구미 (35일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000189919',
+    '경남 레모나 루테인+비타민A 구미 60구미 (30일분)',
+    '18900',
+    '경남 레모나 루테인+비타민A 구미 60구미 (30일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000189920',
+    '경남 레모나 비오틴+비타민B 구미 60구미 (30일분)',
+    '18900',
+    '경남 레모나 비오틴+비타민B 구미 60구미 (30일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000005647',
+    '세노비스 여성용멀티비타민미네랄 60캡슐 (2개월분)',
+    '45000',
+    '세노비스 여성용멀티비타민미네랄 60캡슐 (2개월분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000112149',
+    '네이처메이드 액티브 데일리 멀티 포 우먼 120정 (2개월분)',
+    '35000',
+    '네이처메이드 액티브 데일리 멀티 포 우먼 120정 (2개월분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000105162',
+    '센트룸 멀티 비타민 미네랄 실버 우먼 50정 (50일분)',
+    '27000',
+    '센트룸 멀티 비타민 미네랄 실버 우먼 50정 (50일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000205327',
+    '센트룸 멀티비타민 우먼 더블업 50정 (50일분)',
+    '27000',
+    '센트룸 멀티비타민 우먼 더블업 50정 (50일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000189375',
+    '프레스샷 올인원 토탈 영양 앰플 10입/20입 중 택1',
+    '29900',
+    '프레스샷 올인원 토탈 영양 앰플 10입/20입 중 택1.jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000144907',
+    '얼라이브 원스데일리 포 우먼 60정 (2개월분)',
+    '30000',
+    '얼라이브 원스데일리 포 우먼 60정 (2개월분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000188460',
+    '닥터브라이언 멀티비타민 철분츄어블 90정 (90일분)',
+    '19900',
+    '닥터브라이언 멀티비타민 철분츄어블 90정 (90일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000205806',
+    '닥터브라이언 피치레몬맛구미 멀티 비타민 100구미 (33일분) 슈아콜라보 기획',
+    '18900',
+    '닥터브라이언 피치레몬맛구미 멀티 비타민 100구미 (33일분) 슈아콜라보 기획.jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000197224',
+    '위클리랩 흡수가 빠른 리포좀 비타민C 30포입 (30일분)',
+    '20000',
+    '위클리랩 흡수가 빠른 리포좀 비타민C 30포입 (30일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000202397',
+    '고려은단 멀티비타민 이뮨샷 6병',
+    '17900',
+    '고려은단 멀티비타민 이뮨샷 6병.jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000176980',
+    '닥터브라이언 복숭아맛구미 비타민C D 3000 (100구미) (33일분)',
+    '15900',
+    '닥터브라이언 복숭아맛구미 비타민C D 3000 (100구미) (33일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000199586',
+    '엔젯오리진 비타프레쉬 귤젤리 비타민 C D 3000 70구미+15구미 증정기획(28일분)',
+    '12800',
+    '엔젯오리진 비타프레쉬 귤젤리 비타민 C D 3000 70구미+15구미 증정기획(28일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000131973',
+    '베로카 발포 멀티비타민 15정 (15일분)',
+    '12400',
+    '베로카 발포 멀티비타민 15정 (15일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000151409',
+    '경남 레모나산 30포 (1개월분)',
+    '9900',
+    '경남 레모나산 30포 (1개월분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000205325',
+    '센트룸 멀티비타민 맨 더블업 50정 (50일분)',
+    '27000',
+    '센트룸 멀티비타민 맨 더블업 50정 (50일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000198857',
+    '슬로우글로우 비타민 씨트롱 구미 30구미(15일분) 외 2종',
+    '22500',
+    '슬로우글로우 비타민 씨트롱 구미 30구미(15일분) 외 2종.jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000198204',
+    '[이보영비타민] 마이핏 V 멀티비타 액티브 워터톡 14포 (14일분)',
+    '19800',
+    '[이보영비타민] 마이핏 V 멀티비타 액티브 워터톡 14포 (14일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000205263',
+    '네이처메이드 비타민C 구미 (40일분)',
+    '29500',
+    '네이처메이드 비타민C 구미 (40일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000204739',
+    '아임비타 멀티비타민미네랄 구미젤리 60구미 (30일분)',
+    '16900',
+    '아임비타 멀티비타민미네랄 구미젤리 60구미 (30일분).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000204717',
+    '[지효 PICK]닥터랩노쉬 비타민 구미 (비타민C/B1/B3/B6/B7) 60정 (4주분)(온)',
+    '19900',
+    '[지효 PICK]닥터랩노쉬 비타민 구미 (비타민C/B1/B3/B6/B7) 60정 (4주분)(온).jpg'
+);
+
+INSERT INTO tbl_product (
+    prod_code,
+    prod_name,
+    prod_price,
+    prod_image
+) VALUES (
+    'A000000203546',
+    '뉴트리코어 유기농 비타민D 1000IU(2개월분)(온)',
+    '48000',
+    '뉴트리코어 유기농 비타민D 1000IU(2개월분)(온).jpg'
+);

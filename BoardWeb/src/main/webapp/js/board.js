@@ -17,19 +17,18 @@ function addReplyFnc(){
 	
 	svc.addReply(param, function() {
 		// 등록완료 => 화면에 등록된 글 추가
-		console.log(this.responseText);
+		// console.log(this.responseText);
 		let result = JSON.parse(this.responseText);
-		console.log(result);
+		// console.log(result);
 		if(result.retCode == 'Success') {
 			replyList.appendChild(makeRow(result.retVal));
 			
 			// 댓글 추가시 리스트 다시 로드 : 5개씩
 			page = 1;
 			showPage();
-			
 		}
 	});
-} 
+} // end of addReplyFnc
 
 showPage();
 
