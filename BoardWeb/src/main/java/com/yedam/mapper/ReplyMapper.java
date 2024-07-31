@@ -12,4 +12,5 @@ public interface ReplyMapper {
 	int deleteReply(int replyNo); // 댓글 삭제
 	// 댓글페이징
 	int totalReplyCnt(int boardNo); // 글번호 댓글 개수
+
 }

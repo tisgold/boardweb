@@ -1,19 +1,31 @@
 package com.yedam.commom;
 
-import com.yedam.common.SearchDTO;
-import com.yedam.service.ReplyService;
-import com.yedam.service.ReplyServiceImpl;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import com.yedam.service.MemberService;
+import com.yedam.service.MemberServiceImpl;
 
 public class AppTest {
 	public static void main(String[] args) {
+		MemberService svc = new MemberServiceImpl();
+		List<Map<String, Object>> list = svc.getCountByMember();
+		for(Map<String, Object> map : list) {
+			System.out.println("-------------------------");
+			Set<String> keyset =  map.keySet();
+			for(String key : keyset) {
+				System.out.println(key + ": " + map.get(key));
+			}
+		}
 
-		ReplyService svc = new ReplyServiceImpl();
-		
-		SearchDTO search = new SearchDTO();
-		search.setBno(148);
-		search.setPage(5);
-		
-		svc.replyList(search).forEach(System.out::println);
+//		ReplyService svc = new ReplyServiceImpl();
+//		
+//		SearchDTO search = new SearchDTO();
+//		search.setBno(148);
+//		search.setPage(5);
+//		
+//		svc.replyList(search).forEach(System.out::println);
 		
 //		ReplyVO rvo = new ReplyVO();
 //		rvo.setReplyContent("등록연습");

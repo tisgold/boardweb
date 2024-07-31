@@ -19,8 +19,10 @@ import com.yedam.control.BoardControl;
 import com.yedam.control.BoardForm;
 import com.yedam.control.BoardListControl;
 import com.yedam.control.ChartControl;
+import com.yedam.control.CntByMember;
 import com.yedam.control.DelBoardControl;
 import com.yedam.control.DeleteBoard;
+import com.yedam.control.GoogleChart;
 import com.yedam.control.ImageDownload;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginForm;
@@ -96,6 +98,11 @@ public class FrontController extends HttpServlet {
 		
 		// 이미지 다운로드
 		map.put("/imageDownload.do", new ImageDownload());
+		
+		// 작성자별 게시건수
+		map.put("/countByMember.do", new CntByMember());
+		// 차트페이지
+		map.put("/googleChart.do", new GoogleChart());
 
 	}
 
@@ -103,7 +110,7 @@ public class FrontController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// boardList.do - 목록, addBoard.do - 등록
 		String uri = req.getRequestURI(); // URL(http://localhost/BoardWeb/boardList.do) vs URI(/BoardWeb/boardList.do)
-		String context = req.getContextPath(); // 프로젝트명
+		String context = req.getContextPath(); // 프로젝트명(/BoardWeb)
 		String path = uri.substring(context.length()); // "/boardList.d"
 
 		System.out.println(path);
