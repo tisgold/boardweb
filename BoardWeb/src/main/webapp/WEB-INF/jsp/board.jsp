@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <style>
   div.reply ul {
@@ -72,7 +73,7 @@
   <div class="header">
     <input class="col-sm-8" id="content">
     <button class="col-sm-3" id="addReply">댓글등록</button>
-  </div>
+  </div><br>
   <!-- 댓글목록 -->
   <div class="content">
     <ul id="replyList">
@@ -100,5 +101,6 @@
   	location.href = 'modifyBoard.do?bno=${board.boardNo }';
   });
 </script>  
-<script src="js/boardService.js"></script>
-<script src="js/board.js"></script>
+<!-- <script src="js/boardService.js"></script> -->
+<!-- <script src="js/board.js"></script> -->
+<script src="js/boardJquery.js"></script>

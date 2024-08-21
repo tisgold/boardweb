@@ -65,28 +65,28 @@ let arrayFunc = result => {
 document.querySelectorAll('#selectCenter option').forEach(item => {
 	item.addEventListener('change', function(e) {
 
-	// forEach, map, filter, reduce
-	let newAry = centerAry.filter(function(center, idx, ary) { 
-		// 조건이 true인 값을 새로운 배열에 담음
-		return center.sido = item.innerHTML;
-		// filter(center => center.sido == '대구광역시');
-	});
-	console.log(newAry);
-	
-	let field = ['id', 'centerName', 'address', 'phoneNumber'];
-	newAry.forEach(center => {
-		let tr = document.createElement('tr');
-		tr.addEventListener('click', function(e) {
-			// location.href = 'map.jsp?lat=' + center.lat + '&lng=' + center.lng; 
-			window.open('map.jsp?lat=' + center.lat + '&lng=' + center.lng); // 새 창(탭)에 열림
+		// forEach, map, filter, reduce
+		let newAry = centerAry.filter(function(center, idx, ary) { 
+			// 조건이 true인 값을 새로운 배열에 담음
+			return center.sido = item.innerHTML;
+			// filter(center => center.sido == '대구광역시');
 		});
-		for(let prop of field) {
-			let td = document.createElement('td');
-			td.innerHTML = center[prop];
-			tr.append(td);
-		}
-		document.querySelector('tbody').append(tr);
-	});
+		console.log(newAry);
+		
+		let field = ['id', 'centerName', 'address', 'phoneNumber'];
+		newAry.forEach(center => {
+			let tr = document.createElement('tr');
+			tr.addEventListener('click', function(e) {
+				// location.href = 'map.jsp?lat=' + center.lat + '&lng=' + center.lng; 
+				window.open('map.jsp?lat=' + center.lat + '&lng=' + center.lng); // 새 창(탭)에 열림
+			});
+			for(let prop of field) {
+				let td = document.createElement('td');
+				td.innerHTML = center[prop];
+				tr.append(td);
+			}
+			document.querySelector('tbody').append(tr);
+		});
 	
 	});
 	
