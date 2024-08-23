@@ -1,7 +1,9 @@
 package com.yedam.control;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -31,8 +33,14 @@ public class ReplyListControl implements Control {
 		ReplyService svc = new ReplyServiceImpl();
 		List<ReplyVO> list = svc.replyList(search);
 		
+		// datatable 연습
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("data", list);
+		
+		//json 문자열
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(list);
+//		json = gson.toJson(map); // datatable 연습
 		
 		resp.getWriter().print(json);
 	}

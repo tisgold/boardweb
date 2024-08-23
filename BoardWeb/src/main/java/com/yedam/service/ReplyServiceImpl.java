@@ -16,6 +16,7 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public List<ReplyVO> replyList(SearchDTO search) {
 		return mapper.selectListPaging(search);
+//		return mapper.selectList(search.getBno());
 	}
 
 	@Override

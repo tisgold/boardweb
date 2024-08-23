@@ -126,6 +126,7 @@ input {
   background-color: #bbb;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -146,36 +147,60 @@ input {
 
 <script>
 // Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
+//var myNodelist = document.getElementsByTagName("LI");
+//var i;
+//for (i = 0; i < myNodelist.length; i++) {
+//  var span = document.createElement("SPAN");
+//  var txt = document.createTextNode("\u00D7");
+//  span.className = "close";
+//  span.appendChild(txt);
+//  myNodelist[i].appendChild(span);
+//}
+		
 // Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
+//var close = document.getElementsByClassName("close");
+//var i;
+//for (i = 0; i < close.length; i++) {
+//  close[i].onclick = function() {
+//    var div = this.parentElement;
+//    div.style.display = "none";
+//  }
+//}
+
+// jquery
+$('li').append($('<span/>').text('\u00D7').addClass('close'));
+		                   /*
+		                   .on('click', e => {
+		                	   //console.log(e.target);
+		                	   $(e.target).parent().css('display', 'none');
+		                   }));*/
 
 // Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
+/*var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
+  console.log(ev.target);
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
   }
-}, false);
+}, false);*/
+
+//jquery
+$('ul').on('click', 'li', function() {
+	$(this).toggleClass('checked');
+})
+$('ul').on('click', 'span.close', function(e) {
+	e.stopPropagation();
+	$(this).parent().hide(500); // css('display', 'none')
+})
+
+//document.querySelectorAll('li').forEach(list => {
+//	list.addEventListener('click', function(ev) {
+//		ev.target.classList.toggle('checked');
+//	});
+//})
 
 // Create a new list item when clicking on the "Add" button
-function newElement() {
+/*function newElement() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
   var t = document.createTextNode(inputValue);
@@ -199,7 +224,20 @@ function newElement() {
       div.style.display = "none";
     }
   }
-}
+}*/
+
+// jquery
+function newElement() {  
+  var inputValue = $('#myInput').val();
+  if (inputValue === '') {
+    alert("You must write something!");
+    return;
+  }
+  let span = $('<span />').text('\u00D7').addClass('close');
+  $('#myUL').append($('<li />').text(inputValue).append(span));
+  
+  $('myInput').val("");
+} // end of newElement
 </script>
 
 </body>

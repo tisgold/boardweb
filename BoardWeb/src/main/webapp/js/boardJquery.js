@@ -2,7 +2,7 @@
  * boardJquery.js 
  * jquery용 Ajax 사용
  */
-let page = 1;
+//let page = 1;
 
 function makeRow(elem = {}) {
 	let temp = $('#replyList li:eq(0)').clone();
