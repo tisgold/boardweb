@@ -24,6 +24,17 @@
     		
     		$('tbody').append(newTr);
     	})
+    	
+    	$('#addFirst').on('click', function() {
+			let newTr = $('<tr />').append(
+				$('<td />').append($('<input>').attr({name: 'choice', type: 'radio'})),
+				$('<td />').html($('#userId').val()),
+				$('<td />').html($('#userName').val()),
+        		$('<td />').html($('#userAge').val())
+			);
+			
+			$('tbody').prepend(newTr);
+		})
       
 		$('#addSelected').on('click', function(){
     		let newTr = $('<tr />').append(
@@ -36,6 +47,12 @@
     	  	let target = $('tbody input[type="radio"]:checked').parent().parent();
     	  	console.log(target);
     	  	target.after(newTr); // 선택한 요소의 다음위치
+      	})
+      	
+      	$('#clone').on('click', function() {
+			let origin = $('tbody input[type="radio"]:checked').parent().parent();
+			//origin.after(origin.clone());
+			$('tbody').append(origin.clone());
       	})
     })
   </script>

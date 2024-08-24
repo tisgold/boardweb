@@ -40,16 +40,16 @@
     		.then(result => result.json()) // 문자열 -> 자바스크립트 객체
     		.then(result => {
     			console.log(result)
-    			if(result.retCode == 'Success') {
+    			if(result.retCode == "Success") {
     				// 화면추가
 		          calendar.addEvent({
 		            title: title,
-		            start: arg.start,
-		            end: arg.end,
+		            start: start, //arg.start,
+		            end: end, //arg.end,
 		            allDay: arg.allDay
 		          })
     			}
-    			else if(result.retCode == 'Exist') {
+    			else if(result.retCode == "Exist") {
     				alert("이미 존재하는 일정입니다");
     			}
     			else {

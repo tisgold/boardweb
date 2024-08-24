@@ -12,7 +12,7 @@
 		$('#addBtn').on('click', function(){
 			let val = $('#userVal').val();
 			let btn = $('<button />').html('삭제').on('click', function(){
-				$(this).parent().hide(1000);
+				$(this).parent().hide(500);
 			});
 			$('#list').append($('<li />').html(val + " ").append(btn));
 		});
