@@ -33,15 +33,16 @@ url = "https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&service
   	
 console.log('3', centerAry);
 
+let city = '대구광역시';
 let arrayFunc = result => {
 	console.log(result);
 	centerAry = result.data; // 284건
 	console.log('2', centerAry);
-	
+		
 	// forEach, map, filter, reduce
 	let newAry = centerAry.filter(function(center, idx, ary) { 
 		// 조건이 true인 값을 새로운 배열에 담음
-		return center.sido == '대구광역시';
+		return center.sido == city;
 		// filter(center => center.sido == '대구광역시');
 	});
 	console.log(newAry);
@@ -62,37 +63,17 @@ let arrayFunc = result => {
 	});
 } // end of arrayFunc
 
-document.querySelectorAll('#selectCenter option').forEach(item => {
-	item.addEventListener('change', function(e) {
-
-		// forEach, map, filter, reduce
-		let newAry = centerAry.filter(function(center, idx, ary) { 
-			// 조건이 true인 값을 새로운 배열에 담음
-			return center.sido = item.innerHTML;
-			// filter(center => center.sido == '대구광역시');
-		});
-		console.log(newAry);
-		
-		let field = ['id', 'centerName', 'address', 'phoneNumber'];
-		newAry.forEach(center => {
-			let tr = document.createElement('tr');
-			tr.addEventListener('click', function(e) {
-				// location.href = 'map.jsp?lat=' + center.lat + '&lng=' + center.lng; 
-				window.open('map.jsp?lat=' + center.lat + '&lng=' + center.lng); // 새 창(탭)에 열림
-			});
-			for(let prop of field) {
-				let td = document.createElement('td');
-				td.innerHTML = center[prop];
-				tr.append(td);
-			}
-			document.querySelector('tbody').append(tr);
-		});
+document.querySelector('#selectCenter').addEventListener('change', function(e) {
+	let tbody = document.querySelector('tbody');
+	while(tbody.firstChild) {
+		tbody.removeChild(tbody.firstChild);
+	}
 	
-	});
-	
-});
-
-fetch(url) // ajax : 비동기
-	.then(result => result.json())
-  	.then(arrayFunc)
-  	.catch(err => console.error('에러=>', err));
+	let select = document.querySelector('#selectCenter');
+	city = select.options[select.selectedIndex].value;
+			
+	fetch(url) // ajax : 비동기
+		.then(result => result.json())
+	  	.then(arrayFunc)
+	  	.catch(err => console.error('에러=>', err));
+})
