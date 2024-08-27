@@ -15,5 +15,8 @@ public interface MemberMapper {
 	
 	// 차트(작성자별 건수)
 	List<Map<String, Object>> selectCountByMember();
+	
+	// 회원탈퇴
+	String deleteMemberProc(Map<String, String> map);
 
 }
